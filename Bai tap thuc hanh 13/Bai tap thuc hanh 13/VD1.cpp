@@ -1,0 +1,84 @@
+#include<iostream.h>
+#include<conio.h>
+#include<iomanip.h>
+#include<stdio.h>
+typedef struct{
+	int ngay;
+	int thang;
+	int nam;
+}ngaythang;
+typedef struct {
+	char hoten[30];
+	ngaythang ntns;
+	char gt[20];
+	float diem;
+}SinhVien;
+SinhVien dssv[30];
+void nhap(SinhVien *sv)
+{
+	cout<<"\n Nhap ho ten"<<endl;
+	cin.ignore();
+	cin.getline(sv->hoten,20);
+	cout<<"\n Nhap ngay sinh";
+	cin>>(sv->ntns).ngay>>(sv->ntns).thang>>(sv->ntns).nam;
+	cout<<"\n Nhap gioi tinh";
+	cin.ignore();
+	cin.getline(sv->gt,8);
+	cout<<"\n Nhap diem"<<endl;
+	cin>>sv->diem;
+}
+void nhapds(SinhVien a[],int n){
+	for(int i=0;i<n;i++)
+	{
+		nhap(&a[i]);
+	}
+}
+void in(SinhVien sv)
+{
+	cout<<sv.hoten<<"\t";
+	cout<<sv.ntns.ngay<<"/"<<sv.ntns.thang<<"/"<<sv.ntns.nam<<"\t";
+	cout<<sv.gt<<"\t";
+	cout<<sv.diem<<endl;
+
+}
+void inds(SinhVien a[], int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		in(a[i]);
+	}
+}
+void indssvmax(SinhVien a[], int n)
+{
+	float max=a[0].diem;
+	for(int i=1;i<n;i++)
+	{
+		if(max<=a[i].diem)
+		{
+			max=a[i].diem;
+		}
+	}
+	int vitri=0;
+	cout<<"Ban co diem cao nhat lop"<<endl;
+	for(int i=0;i<n;i++)
+	{
+		if(a[i].diem==max)
+		{
+			cout<<"vi tri:"<<vitri+1<<endl;
+			cout<<a[i].hoten<<" "<<a[i].diem;
+			vitri++;
+		}
+	}
+}
+int main()
+{
+	cout<<"nhap so sinh vien: "<<endl;
+	int n;
+	cin>>n;
+	nhapds(dssv,n);
+	cout<<"in lai dssv sau khi nhap"<<endl;
+	inds(dssv,n);
+	indssvmax(dssv,n);
+	return 0;
+}
+

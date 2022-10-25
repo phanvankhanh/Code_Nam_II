@@ -1,0 +1,60 @@
+#include<iostream.h>
+#include<conio.h>
+#include<iomanip.h>
+using namespace std;
+typedef struct
+{
+	char tencn[30];
+	int ns;
+	float gl;
+}congnhan;
+void nhap(congnhan cn[], int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		cin.ignore();
+		cout<<"nhap cong nhan thu "<<i+1<<endl;
+		cout<<"Ho va ten: "; cin.getline(cn[i].tencn,30);
+		cout<<"Nam sinh: "; cin>>cn[i].ns;
+		cout<<"Gio lam: "; cin>>cn[i].gl;
+	}
+}
+void xuat(congnhan cn[], int n)
+{
+		cout<<"\n\n\t\t\t\t--DANH SACH CONG NHAN--"<<endl;
+		cout<<setw(30)<<"Ho va ten";
+		cout<<setw(15)<<"Nam sinh";
+		cout<<setw(20)<<"Gio lam"<<endl;
+		for(int i=0;i<n;i++)
+		{
+			cout<<setw(30)<<cn[i].tencn;
+			cout<<setw(15)<<cn[i].ns;
+			cout<<setw(20)<<cn[i].gl<<endl;
+		}
+}
+void dsnhanthuong(congnhan cn[], int n)
+{
+	cout<<"\n\n\t\t\t\t--DANH SACHCONG NHAN DUOC NHAN THUONG--"<<endl;
+	cout<<setw(30)<<"Ho va ten";
+	cout<<setw(15)<<"Nam sinh";
+	cout<<setw(20)<<"Gio lam"<<endl;
+	for(int i=0;i<n;i++)
+	{
+		if(cn[i].gl>40)
+		{
+			cout<<setw(30)<<cn[i].tencn;
+			cout<<setw(15)<<cn[i].ns;
+			cout<<setw(20)<<cn[i].gl<<endl;
+		}
+	}
+}
+int main()
+{
+	int n;
+	congnhan cn[50];
+	cout<<"Nhap so cong nhan: "; cin>>n;
+	nhap(cn,n);
+	xuat(cn,n);
+	dsnhanthuong(cn,n);
+	return 0;
+}

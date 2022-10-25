@@ -1,0 +1,92 @@
+#include<iostream.h>
+#include<conio.h>
+#include<iomanip.h>
+using namespace std;
+typedef struct
+{
+	char mahs[15];
+	char tenhs[30];
+	int diemtoan;
+	int diemly;
+	int diemhoa;
+	float dtb;
+	int xeploai;
+}hocsinh;
+void nhap(hocsinh hs[], int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		cin.ignore();
+		cout<<"Nhap hoc sinh thu "<<i+1<<endl;
+		cout<<"Ho va ten: "; cin.getline(hs[i].tenhs,30);
+		cout<<"Ma hoc sinh: "; cin.getline(hs[i].mahs,15);
+		cout<<"Diem toan: "; cin>>hs[i].diemtoan;
+		cout<<"Diem ly: "; cin>>hs[i].diemly;
+		cout<<"Diem hoa: "; cin>>hs[i].diemhoa;
+	}
+}
+void diemtb(hocsinh hs[], int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		hs[i].dtb=((hs[i].diemtoan+hs[i].diemly+hs[i].diemhoa)/3);
+	}
+}
+void xloai(hocsinh hs[], int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		if(hs[i].dtb>=9)
+		{
+			cout<<" Xuat Sac "<<endl;
+		}
+		else if(hs[i].dtb>=8 && hs[i].dtb<9)
+		{
+			cout<<" Gioi "<<endl;
+		}
+		else if(hs[i].dtb>=6.5 && hs[i].dtb<8)
+		{
+			cout<<" Kha "<<endl;
+		}
+		else if(hs[i].dtb>=5 && hs[i].dtb<6.5)
+		{
+			cout<<" Trung binh "<<endl;
+		}
+		else 
+		{
+			cout<<" Yeu "<<endl;
+		}
+		
+	}
+}
+void xuat(hocsinh hs[], int n)
+{
+		cout<<"\n\n\t\t\t\t--DANH SACH HOC SINH--"<<endl;
+		cout<<setw(30)<<"Ho va ten";
+		cout<<setw(15)<<"Ma hoc sinh";
+		cout<<setw(15)<<"Diem toan";
+		cout<<setw(15)<<"Diem ly";
+		cout<<setw(15)<<"Diem hoa";
+		cout<<setw(20)<<"Diem trung binh";
+		cout<<setw(15)<<"Xep loai"<<endl;
+		for(int i=0;i<n;i++)
+		{
+			cout<<setw(30)<<hs[i].tenhs;
+			cout<<setw(15)<<hs[i].mahs;
+			cout<<setw(15)<<hs[i].diemtoan;
+			cout<<setw(15)<<hs[i].diemly;
+			cout<<setw(15)<<hs[i].diemhoa;
+			cout<<setw(20)<<hs[i].dtb<<endl;
+		}
+}
+int main()
+{
+	int n;
+	hocsinh hs[50];
+	cout<<"Nhap so hoc sinh: "; cin>>n;
+	nhap(hs,n);
+	diemtb(hs,n);
+	xuat(hs,n);
+	xloai(hs,n);
+	return 0;
+}
